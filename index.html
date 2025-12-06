@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aplikacion Profesional me 2 Seksione</title>
+
+<style>
+  body{margin:0;font-family:'Segoe UI',sans-serif;background:#eef2f7;padding:20px;color:#1e293b;}
+  .container{max-width:900px;margin:auto;}
+  header{text-align:center;margin-bottom:25px;}
+  h1{font-size:28px;color:#1e40af;margin:0;}
+  .subtitle{color:#475569;font-size:15px;}
+  .card{background:white;padding:22px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.08);margin-bottom:25px;}
+  h2{color:#2563eb;margin-top:0;}
+  .input-row{display:flex;gap:10px;margin-bottom:15px;}
+  input,textarea{flex:1;padding:12px;border-radius:8px;border:1px solid #cbd5e1;font-size:15px;}
+  textarea{height:70px;resize:none;}
+  button{background:#2563eb;color:white;border:0;padding:12px 18px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.2s;}
+  button:hover{opacity:0.9;}
+  button.delete{background:#e11d48;}
+  .list .item{background:#f8fafc;border:1px solid #e2e8f0;padding:12px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Aplikacion Profesional me 2 Seksione</h1>
+    <p class="subtitle">Detyra & Shënime — Dizajn Modern</p>
+  </header>
+
+  <section class="card">
+    <h2>Detyrat</h2>
+    <div class="input-row">
+      <input id="taskInput" type="text" placeholder="Shkruaj një detyrë...">
+      <button onclick="addTask()">Shto</button>
+    </div>
+    <div id="tasks" class="list"></div>
+  </section>
+
+  <section class="card">
+    <h2>Shënime</h2>
+    <div class="input-row">
+      <textarea id="noteInput" placeholder="Shkruaj një shënim..."></textarea>
+      <button onclick="addNote()">Shto</button>
+    </div>
+    <div id="notes" class="list"></div>
+  </section>
+</div>
+
+<script>
+function addTask(){
+  const v = taskInput.value.trim();
+  if(!v) return;
+  tasks.innerHTML += `
+    <div class='item'>
+      <span>${v}</span>
+      <button class='delete' onclick='removeItem(this)'>Fshi</button>
+    </div>`;
+  taskInput.value="";
+}
+
+function addNote(){
+  const v = noteInput.value.trim();
+  if(!v) return;
+  notes.innerHTML += `
+    <div class='item'>
+      <span>${v}</span>
+      <button class='delete' onclick='removeItem(this)'>Fshi</button>
+    </div>`;
+  noteInput.value="";
+}
+
+function removeItem(btn){
+  btn.parentElement.remove();
+}
+</script>
+
+</body>
+</html>
